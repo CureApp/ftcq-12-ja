@@ -11,29 +11,21 @@ function toThrowError(fn) {
 }
 
 
-var FTND = require('./index.js');
+var FTCQ = require('./index.js');
 
 
 // getQuestions
-console.assert(FTND.getQuestions().length === 6);
+console.assert(FTCQ.getQuestions().length === 12);
 
 // getChoices
-console.assert(FTND.getChoices(0).length === 4);
-console.assert(FTND.getChoices(1).length === 2);
-console.assert(FTND.getChoices(2).length === 2);
-console.assert(FTND.getChoices(3).length === 4);
-console.assert(FTND.getChoices(4).length === 2);
-console.assert(FTND.getChoices(5).length === 2);
+// console.assert(FTCQ.getChoices(0).length === 7);
 
 
 // calculate
-console.assert(FTND.calculate([0,0,0,0,0,0]) === 7);
-console.assert(FTND.calculate([3,0,0,0,0,0]) === 4);
-console.assert(FTND.calculate([2,1,0,3,1,0]) === 6);
-console.assert(FTND.calculate([0,0,0,3,0,0]) === 10);
-console.assert(FTND.calculate(['0','0','0','3','0','0']) === 10);
+console.assert(FTCQ.calculate([2,1,4,2,1,4,2,1,4,2,1,4]) === 2.33);
+// calculateFactors
+console.assert(FTCQ.calculateFactors([2,1,4,2,1,4,2,1,4,2,1,4])[1] === 3.5);
 
-toThrowError(function() { FTND.calculate([0,0,0,3,0]) }); // 長さのエラーを出す
-toThrowError(function() { FTND.calculate([0,0,0,0,0,4]) }); // 値のエラーを出す
+toThrowError(function() { FTCQ.calculateFactors([0,0,0,3,0]) }); // 長さのエラーを出す
 
 console.log('すべてのテスト通過');
