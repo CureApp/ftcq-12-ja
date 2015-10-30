@@ -1,0 +1,32 @@
+{
+  "name": "ftnd-test-ja",
+  "version": "1.0.0",
+  "description": "FTND (Fagerstrom Test for Nicotine Dependence) in Japanese",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CureApp/ftnd-test-ja.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CureApp/ftnd-test-ja/issues"
+  },
+  "homepage": "https://github.com/CureApp/ftnd-test-ja",
+  "keywords": [
+    "Japanese",
+    "FTND",
+    "tobacco",
+    "medical",
+    "nicotine dependence",
+    "Fagerstrom",
+    "smoking"
+  ],
+  "author": "CureApp, Inc.",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
