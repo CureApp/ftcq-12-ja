@@ -14,7 +14,7 @@ function getMean (arrNumber) {
     return sum(arrNumber) / arrNumber.length;
 };
 
-module.exports =　exports = {
+module.exports = exports = {
 
     /**
     質問一覧を返す
