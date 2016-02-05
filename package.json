@@ -1,6 +1,6 @@
 {
   "name": "ftcq-12-ja",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FTCQ12 in Japanese",
   "main": "index.js",
   "scripts": {
