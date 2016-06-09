@@ -28,4 +28,10 @@ console.assert(FTCQ.calculateFactors([2,1,4,2,1,4,2,1,4,2,1,4])[1] === 3.5);
 
 toThrowError(function() { FTCQ.calculateFactors([0,0,0,3,0]) }); // 長さのエラーを出す
 
+// getFactorNameJP
+console.assert(FTCQ.getFactorNameJP('emotionality') === '情動性');
+
+// calculateFactorsByFactorName
+console.assert(FTCQ.calculateFactorsByFactorName('emotionality', [2,1,4,2,1,4,2,1,4,2,1,4]) === 3.5);
+
 console.log('すべてのテスト通過');
