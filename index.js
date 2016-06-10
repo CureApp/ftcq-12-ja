@@ -124,6 +124,40 @@ module.exports = exports = {
                 answerIndexes[10]
             ])
         };
+    },
+
+    /**
+    factorの項目名(日本語)を取得する
+
+    @method getFactorNameJP
+    @param {String} factor項目名(英語)
+    @return {String} factor項目名(日本語)
+    */
+    getFactorNameJP: function(factorName) {
+        var factorNameJPs = {
+            'emotionality': '情動性',
+            'expectancy': '期待性',
+            'compulsivity': '強迫性',
+            'purposefulness': '意図性'
+        }
+        return factorNameJPs[factorName]
+    },
+
+    /**
+    項目名からfactor別の平均値を取得する
+
+    @method calculateFactorsByFactorName
+    @param {String}
+    @return {Number}
+    */
+    calculateFactorsByFactorName: function(factorName, answerIndexes) {
+        var factorNames = {
+            'emotionality': 1,
+            'expectancy': 2,
+            'compulsivity': 3,
+            'purposefulness': 4
+        }
+        var num = factorNames[factorName]
+        return exports.calculateFactors(answerIndexes)[num]
     }
 };
-
