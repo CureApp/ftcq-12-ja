@@ -127,6 +127,16 @@ module.exports = exports = {
     },
 
     /**
+    factorの項目名(英語)一覧を取得する
+    @method getFactorNames
+    @return {Array(String)} factor項目名の配列
+    */
+    getFactorNames: function() {
+        factorNames = ['emotionality', 'expectancy', 'compulsivity', 'purposefulness']
+        return factorNames
+    },
+
+    /**
     factorの項目名(日本語)を取得する
 
     @method getFactorNameJP
