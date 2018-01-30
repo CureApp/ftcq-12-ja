@@ -14,6 +14,32 @@ function getMean (arrNumber) {
     return sum(arrNumber) / arrNumber.length;
 };
 
+function round(value) {
+    return Math.floor(value * 100) / 100;
+}
+
+/**
+質問indexと、回答indexから、その質問に関するスコアを返す
+
+@method getScore
+@param {Number} qsIndex
+@param {Number} answerIndex
+@return Number
+*/
+function getScore(qsIndex, answerIndex) {
+  var qsNo = qsIndex + 1;
+  var score = answerIndex + 1;
+  switch (qsNo) {
+    case 1:
+    case 4:
+    case 9:
+    case 11:
+      return 8 - score;
+    default:
+      return score;
+  }
+}
+
 module.exports = exports = {
 
     /**
@@ -82,10 +108,13 @@ module.exports = exports = {
     @return {Number} 平均値
     */
     calculate: function(answerIndexes) {
+        var scores = answerIndexes.map(function(answerIndex, qsIndex) {
+            return getScore(qsIndex, answerIndex)
+        });
 
-        var average = getMean(answerIndexes);
+        var average = getMean(scores);
 
-        return Math.floor(average *100) /100;
+        return round(average)
     },
 
     /**
@@ -103,26 +132,26 @@ module.exports = exports = {
         }
 
         return {
-            1: exports.calculate([
-                answerIndexes[2],
-                answerIndexes[5],
-                answerIndexes[9],
-                answerIndexes[11]
-            ]),
-            2: exports.calculate([
-                answerIndexes[0],
-                answerIndexes[3],
-                answerIndexes[6]
-            ]),
-            3: exports.calculate([
-                answerIndexes[1],
-                answerIndexes[4],
-                answerIndexes[7]
-            ]),
-            4: exports.calculate([
-                answerIndexes[8],
-                answerIndexes[10]
-            ])
+            1: round(getMean([
+                getScore(2, answerIndexes[2]),
+                getScore(5, answerIndexes[5]),
+                getScore(9, answerIndexes[9]),
+                getScore(11, answerIndexes[11])
+            ])),
+            2: round(getMean([
+                getScore(0, answerIndexes[0]),
+                getScore(3, answerIndexes[3]),
+                getScore(6, answerIndexes[6])
+            ])),
+            3: round(getMean([
+                getScore(1, answerIndexes[1]),
+                getScore(4, answerIndexes[4]),
+                getScore(7, answerIndexes[7])
+            ])),
+            4: round(getMean([
+                getScore(8, answerIndexes[8]),
+                getScore(10, answerIndexes[10])
+            ]))
         };
     },
 
