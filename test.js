@@ -71,6 +71,20 @@ var factors = {
 console.assert(getMean(scores) === 2.08)
 console.assert(FTCQ.calculate(answerIndexes) === 2.08)
 
+// getScore
+console.assert(FTCQ.getScore(0,0) === 7)
+console.assert(FTCQ.getScore(1,1) === 2)
+console.assert(FTCQ.getScore(2,5) === 6)
+console.assert(FTCQ.getScore(3,6) === 1)
+console.assert(FTCQ.getScore(4,1) === 2)
+console.assert(FTCQ.getScore(5,3) === 4)
+console.assert(FTCQ.getScore(6,2) === 3)
+console.assert(FTCQ.getScore(7,0) === 1)
+console.assert(FTCQ.getScore(8,4) === 3)
+console.assert(FTCQ.getScore(9,1) === 2)
+console.assert(FTCQ.getScore(10,2) === 5)
+console.assert(FTCQ.getScore(11,6) === 7)
+
 // calculateFactors
 console.assert(FTCQ.calculateFactors(answerIndexes)[1] === factors[1]);
 console.assert(FTCQ.calculateFactors(answerIndexes)[2] === factors[2]);
