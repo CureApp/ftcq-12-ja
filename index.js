@@ -18,28 +18,6 @@ function round(value) {
     return Math.floor(value * 100) / 100;
 }
 
-/**
-質問indexと、回答indexから、その質問に関するスコアを返す
-
-@method getScore
-@param {Number} qsIndex
-@param {Number} answerIndex
-@return Number
-*/
-function getScore(qsIndex, answerIndex) {
-  var qsNo = qsIndex + 1;
-  var score = answerIndex + 1;
-  switch (qsNo) {
-    case 1:
-    case 4:
-    case 9:
-    case 11:
-      return 8 - score;
-    default:
-      return score;
-  }
-}
-
 module.exports = exports = {
 
     /**
@@ -64,7 +42,29 @@ module.exports = exports = {
             '吸える機会があっても簡単に断れるだろう',
             'いま吸えたら物事をもっと上手くやれるだろう'
         ];
-   },
+    },
+
+    /**
+    質問indexと、回答indexから、その質問に関するスコアを返す
+
+    @method getScore
+    @param {Number} qsIndex
+    @param {Number} answerIndex
+    @return Number
+    */
+    getScore: function(qsIndex, answerIndex) {
+      var qsNo = qsIndex + 1;
+      var score = answerIndex + 1;
+      switch (qsNo) {
+        case 1:
+        case 4:
+        case 9:
+        case 11:
+          return 8 - score;
+        default:
+          return score;
+      }
+    },
 
     /**
     indexで与えられた質問の選択肢を返す
@@ -109,7 +109,7 @@ module.exports = exports = {
     */
     calculate: function(answerIndexes) {
         var scores = answerIndexes.map(function(answerIndex, qsIndex) {
-            return getScore(qsIndex, answerIndex)
+            return exports.getScore(qsIndex, answerIndex)
         });
 
         var average = getMean(scores);
@@ -133,24 +133,24 @@ module.exports = exports = {
 
         return {
             1: round(getMean([
-                getScore(2, answerIndexes[2]),
-                getScore(5, answerIndexes[5]),
-                getScore(9, answerIndexes[9]),
-                getScore(11, answerIndexes[11])
+                exports.getScore(2, answerIndexes[2]),
+                exports.getScore(5, answerIndexes[5]),
+                exports.getScore(9, answerIndexes[9]),
+                exports.getScore(11, answerIndexes[11])
             ])),
             2: round(getMean([
-                getScore(0, answerIndexes[0]),
-                getScore(3, answerIndexes[3]),
-                getScore(6, answerIndexes[6])
+                exports.getScore(0, answerIndexes[0]),
+                exports.getScore(3, answerIndexes[3]),
+                exports.getScore(6, answerIndexes[6])
             ])),
             3: round(getMean([
-                getScore(1, answerIndexes[1]),
-                getScore(4, answerIndexes[4]),
-                getScore(7, answerIndexes[7])
+                exports.getScore(1, answerIndexes[1]),
+                exports.getScore(4, answerIndexes[4]),
+                exports.getScore(7, answerIndexes[7])
             ])),
             4: round(getMean([
-                getScore(8, answerIndexes[8]),
-                getScore(10, answerIndexes[10])
+                exports.getScore(8, answerIndexes[8]),
+                exports.getScore(10, answerIndexes[10])
             ]))
         };
     },
